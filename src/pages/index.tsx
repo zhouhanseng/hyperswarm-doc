@@ -1,12 +1,24 @@
 import Link from "next/link";
 import Layout from "../components/Layout";
-import { I18nPage, useTranslation } from "../i18n";
+import { connect } from "react-redux";
+import { useTranslation } from "../i18n";
+import { hyperstore } from "../store";
 
-const IndexPage: I18nPage = () => {
+interface Props {
+  username: string;
+  namespacesRequired: string[];
+}
+
+const IndexPage = ({ username }: Props) => {
   const { t } = useTranslation();
+
+  setTimeout(() => {
+    hyperstore.user.update({ name: "abddddddd" });
+  }, 2000);
+
   return (
     <Layout title="Home | Next.js + TypeScript Example">
-      <h1>Hello Next.js 👋</h1>
+      <h1>Hello Next.js {username} 👋</h1>
       <p>
         <Link href="/about">
           <a>About{t("common.abc")}</a>
@@ -29,4 +41,10 @@ IndexPage.getInitialProps = () => {
   };
 };
 
-export default IndexPage;
+const MapStateToProps = (store: { [key: string]: any }) => {
+  return {
+    username: store[hyperstore.user.name],
+  };
+};
+
+export default connect(MapStateToProps)(IndexPage);

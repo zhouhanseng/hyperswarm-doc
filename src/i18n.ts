@@ -21,9 +21,3 @@ if (process.env.NODE_ENV !== "production") {
 export const appWithTranslation = nextI18next.appWithTranslation;
 
 export const useTranslation = originalUseTranslation;
-
-export type I18nPage<P = {}> = NextComponentType<
-  NextPageContext,
-  { namespacesRequired: string[] },
-  P & { namespacesRequired: string[] }
->;
