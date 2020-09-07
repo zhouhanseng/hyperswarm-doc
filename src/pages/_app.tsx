@@ -5,6 +5,7 @@ import { appWithTranslation } from "../i18n";
 import { store } from "../store";
 import { ApolloProvider } from "@apollo/client";
 import { client } from "../apollo";
+import "../main.css";
 
 const MyApp = ({ Component, pageProps }: AppProps) => (
   <ApolloProvider client={client}>
