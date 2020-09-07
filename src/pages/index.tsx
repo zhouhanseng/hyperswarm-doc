@@ -21,22 +21,22 @@ const EXCHANGE_RATES = gql`
 `;
 
 const IndexPage = ({ username }: Props) => {
-  const { t } = useTranslation();
-  const { loading, error, data } = useQuery(EXCHANGE_RATES, {
-    variables: { currency: "USD" },
-    // Doc: Pass in false to skip your query during server-side rendering.
-    ssr: false,
-  });
+  // const { t } = useTranslation();
+  // const { loading, error, data } = useQuery(EXCHANGE_RATES, {
+  //   variables: { currency: "USD" },
+  //   // Doc: Pass in false to skip your query during server-side rendering.
+  //   ssr: false,
+  // });
 
-  setTimeout(() => {
-    hyperstore.user.update({ name: "abddddddd" });
-  }, 2000);
+  // setTimeout(() => {
+  //   hyperstore.user.update({ name: "abddddddd" });
+  // }, 2000);
 
   return (
     <Layout title="Home | Next.js + TypeScript Example">
-      <h1>Hello Next.js {username} 👋</h1>
+      {/* <h1>Hello Next.js {username} 👋</h1>
       <p>
-        <Link href="/about">
+        <Link href="/redux">
           <a>About{t("common.abc")}</a>
         </Link>
       </p>
@@ -64,7 +64,7 @@ const IndexPage = ({ username }: Props) => {
             )
           )
         )}
-      </p>
+      </p> */}
     </Layout>
   );
 };

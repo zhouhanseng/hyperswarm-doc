@@ -13,7 +13,4 @@ export const store = createStore(
   applyMiddleware(logger)
 );
 
-/**
- * Todo: Warning: Text content did not match. Server: "abddddddd" Client: "zhc"
- */
 export const hyperstore = rechyons(initState, store.dispatch);
