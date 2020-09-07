@@ -2,10 +2,7 @@ const path = require("path");
 
 module.exports = {
   publicRuntimeConfig: {
-    localeSubpaths:
-      typeof process.env.LOCALE_SUBPATHS === "string"
-        ? process.env.LOCALE_SUBPATHS
-        : "none",
+    localeSubpaths: {},
   },
   webpack(config, options) {
     if (!options.isServer && config.mode === "development") {
