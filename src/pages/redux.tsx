@@ -5,7 +5,6 @@ import { Typography, TextField } from "@material-ui/core";
 
 interface Props {
   username: string;
-  namespacesRequired: string[];
 }
 
 const Page = ({ username }: Props) => {
@@ -28,12 +27,6 @@ const Page = ({ username }: Props) => {
       </section>
     </Layout>
   );
-};
-
-Page.getInitialProps = () => {
-  return {
-    namespacesRequired: ["redux"],
-  };
 };
 
 const MapStateToProps = (store: { [key: string]: any }) => {

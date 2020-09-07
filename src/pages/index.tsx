@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Layout from "../components/Layout";
 import { connect } from "react-redux";
-import { useTranslation } from "../i18n";
+
 import { hyperstore } from "../store";
 import { useQuery, gql } from "@apollo/client";
 
@@ -21,7 +21,6 @@ const EXCHANGE_RATES = gql`
 `;
 
 const IndexPage = ({ username }: Props) => {
-  // const { t } = useTranslation();
   // const { loading, error, data } = useQuery(EXCHANGE_RATES, {
   //   variables: { currency: "USD" },
   //   // Doc: Pass in false to skip your query during server-side rendering.
@@ -37,7 +36,7 @@ const IndexPage = ({ username }: Props) => {
       {/* <h1>Hello Next.js {username} 👋</h1>
       <p>
         <Link href="/redux">
-          <a>About{t("common.abc")}</a>
+              <a>About{t("common.abc")}</a>
         </Link>
       </p>
       <p>
