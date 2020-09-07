@@ -3,14 +3,30 @@ import Layout from "../components/Layout";
 import { connect } from "react-redux";
 import { useTranslation } from "../i18n";
 import { hyperstore } from "../store";
+import { useQuery, gql } from "@apollo/client";
 
 interface Props {
   username: string;
   namespacesRequired: string[];
 }
 
+const EXCHANGE_RATES = gql`
+  query GetExchangeRates($currency: String!) {
+    rates(currency: $currency) {
+      currency
+      rate
+      name
+    }
+  }
+`;
+
 const IndexPage = ({ username }: Props) => {
   const { t } = useTranslation();
+  const { loading, error, data } = useQuery(EXCHANGE_RATES, {
+    variables: { currency: "USD" },
+    // Doc: Pass in false to skip your query during server-side rendering.
+    ssr: false,
+  });
 
   setTimeout(() => {
     hyperstore.user.update({ name: "abddddddd" });
@@ -23,6 +39,31 @@ const IndexPage = ({ username }: Props) => {
         <Link href="/about">
           <a>About{t("common.abc")}</a>
         </Link>
+      </p>
+      <p>
+        {loading ? (
+          <p>Loading...</p>
+        ) : error ? (
+          <p>Error</p>
+        ) : (
+          data.rates.map(
+            ({
+              currency,
+              rate,
+              name,
+            }: {
+              currency: string;
+              rate: string;
+              name: string;
+            }) => (
+              <div key={currency}>
+                <p>
+                  {name} {currency}: {rate}
+                </p>
+              </div>
+            )
+          )
+        )}
       </p>
     </Layout>
   );

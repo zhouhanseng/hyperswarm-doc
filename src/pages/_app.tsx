@@ -3,11 +3,15 @@ import type { AppProps, AppContext } from "next/app";
 import { Provider } from "react-redux";
 import { appWithTranslation } from "../i18n";
 import { store } from "../store";
+import { ApolloProvider } from "@apollo/client";
+import { client } from "../apollo";
 
 const MyApp = ({ Component, pageProps }: AppProps) => (
-  <Provider store={store}>
-    <Component {...pageProps} />
-  </Provider>
+  <ApolloProvider client={client}>
+    <Provider store={store}>
+      <Component {...pageProps} />
+    </Provider>
+  </ApolloProvider>
 );
 
 MyApp.getInitialProps = async (appContext: AppContext) => ({
