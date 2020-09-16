@@ -9,7 +9,7 @@ interface Props {
 
 const Page = ({ username }: Props) => {
   return (
-    <Layout title="redux-rechyons">
+    <Layout title="redux">
       <section className="flex items-center">
         <TextField
           onChange={(event) => {

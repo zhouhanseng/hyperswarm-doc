@@ -24,20 +24,25 @@ const Layout = ({ children, title = "This is the default title" }: Props) => (
         </Button>
         <Button>
           <Link href="/redux">
-            <a>redux-rechyons</a>
+            <a>redux</a>
           </Link>
         </Button>
-        <Button>
-          <Link href="/graphql">
-            <a>graphql</a>
+        {/* <Button>
+          <Link href="/indexed-db">
+            <a>indexed-db</a>
           </Link>
-        </Button>
+        </Button> */}
         <Button>
           <Link href="/i18n">
             <a>i18n</a>
           </Link>
         </Button>
         <Button>
+          <Link href="/cache-image">
+            <a>cache-image</a>
+          </Link>
+        </Button>
+        {/* <Button>
           <Link href="/users">
             <a>users list</a>
           </Link>
@@ -46,7 +51,7 @@ const Layout = ({ children, title = "This is the default title" }: Props) => (
           <Link href="/api/users">
             <a>users api</a>
           </Link>
-        </Button>
+        </Button> */}
       </nav>
     </header>
     {children}
