@@ -10,6 +10,7 @@ import Layout from "../components/Layout";
 import { connect } from "react-redux";
 import { Typography, Slider, Button } from "@material-ui/core";
 import { hyperstore } from "../store";
+import { PageAnimate } from "../components/PageAnimate";
 
 type MySliderProps = {
   setValue: Dispatch<SetStateAction<number>>;
@@ -92,27 +93,33 @@ const IndexPage = () => {
 
   return (
     <Layout title="useMemo">
-      <Typography variant="h4" className="mb-4">
-        When to useMemo?
-      </Typography>
-      <Typography variant="h5" className="mb-4">
-        1. Computationally expensive calculations
-      </Typography>
-      <section className="w-64">
-        <Typography>{value}</Typography>
-        {opt ? (
-          <MyBetterSlider setValue={setValue} />
-        ) : (
-          <MySlider setValue={setValue} />
-        )}
-      </section>
-      <Typography variant="h5" className="mt-4 mb-4">
-        2. Referential equality
-      </Typography>
-      {opt ? <BetterBlub /> : <Blub />}
-      <Button variant="outlined" className="mt-4" onClick={() => setOpt(!opt)}>
-        {opt ? "not useMemo" : "useMemo"}
-      </Button>
+      <PageAnimate>
+        <Typography variant="h4" className="mb-4">
+          When to useMemo?
+        </Typography>
+        <Typography variant="h5" className="mb-4">
+          1. Computationally expensive calculations
+        </Typography>
+        <section className="w-64">
+          <Typography>{value}</Typography>
+          {opt ? (
+            <MyBetterSlider setValue={setValue} />
+          ) : (
+            <MySlider setValue={setValue} />
+          )}
+        </section>
+        <Typography variant="h5" className="mt-4 mb-4">
+          2. Referential equality
+        </Typography>
+        {opt ? <BetterBlub /> : <Blub />}
+        <Button
+          variant="outlined"
+          className="mt-4"
+          onClick={() => setOpt(!opt)}
+        >
+          {opt ? "not useMemo" : "useMemo"}
+        </Button>
+      </PageAnimate>
     </Layout>
   );
 };
