@@ -18,10 +18,10 @@ type MySliderProps = {
 const DEFAULT_VAL = 30;
 
 const MySlider = ({ setValue }: MySliderProps) => {
-  let result = 0;
+  let _result = 0;
   for (let i = 0; i < 10000; i++) {
     for (let j = 0; j < 10000; j++) {
-      result += i + j;
+      _result += i + j;
     }
   }
 
@@ -37,11 +37,11 @@ const MySlider = ({ setValue }: MySliderProps) => {
 };
 
 const MyBetterSlider = ({ setValue }: MySliderProps) => {
-  let result = 0;
+  let _result = 0;
   useMemo(() => {
     for (let i = 0; i < 10000; i++) {
       for (let j = 0; j < 10000; j++) {
-        result += i + j;
+        _result += i + j;
       }
     }
   }, []);
