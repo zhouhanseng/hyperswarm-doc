@@ -1,12 +1,27 @@
 import React, { ReactNode } from "react";
 import Link from "next/link";
 import Head from "next/head";
-import { Button } from "@material-ui/core";
+import { Button, Typography } from "@material-ui/core";
 
 type Props = {
   children?: ReactNode;
   title?: string;
 };
+
+type NavigateProps = {
+  link: string;
+  title: string;
+};
+
+const Navigate = ({ link, title }: NavigateProps) => (
+  <Typography color="textPrimary" variant="body1" className="inline-block">
+    <Button>
+      <Link href={link}>
+        <a className="normal-case">{title}</a>
+      </Link>
+    </Button>
+  </Typography>
+);
 
 const Layout = ({ children, title = "This is the default title" }: Props) => (
   <div>
@@ -17,41 +32,10 @@ const Layout = ({ children, title = "This is the default title" }: Props) => (
     </Head>
     <header>
       <nav className="mb-1">
-        <Button>
-          <Link href="/">
-            <a>home</a>
-          </Link>
-        </Button>
-        <Button>
-          <Link href="/redux">
-            <a>redux</a>
-          </Link>
-        </Button>
-        {/* <Button>
-          <Link href="/indexed-db">
-            <a>indexed-db</a>
-          </Link>
-        </Button> */}
-        <Button>
-          <Link href="/i18n">
-            <a>i18n</a>
-          </Link>
-        </Button>
-        <Button>
-          <Link href="/cache-image">
-            <a>cache-image</a>
-          </Link>
-        </Button>
-        {/* <Button>
-          <Link href="/users">
-            <a>users list</a>
-          </Link>
-        </Button>
-        <Button>
-          <Link href="/api/users">
-            <a>users api</a>
-          </Link>
-        </Button> */}
+        <Navigate link="/useMemo" title="useMemo" />
+        <Navigate link="/redux" title="redux" />
+        <Navigate link="/cache-image" title="cache-image" />
+        <Navigate link="/i18n" title="i18n" />
       </nav>
     </header>
     {children}
