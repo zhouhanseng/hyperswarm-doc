@@ -1,7 +1,8 @@
 import React from "react";
 import Layout from "../components/Layout";
+import { Trans } from "react-i18next";
 import { withTranslation, TranslateProps } from "../i18n";
-import { Button } from "@material-ui/core";
+import { Button, Typography } from "@material-ui/core";
 
 const Page = ({ t, i18n }: TranslateProps) => {
   return (
@@ -19,6 +20,20 @@ const Page = ({ t, i18n }: TranslateProps) => {
       >
         {t("common.switch_language")}
       </Button>
+      <Typography color="textPrimary" variant="body1" className="mt-3">
+        <Trans
+          i18nKey="common.text_contains_link"
+          components={{
+            again: (
+              <Button
+                variant="outlined"
+                onClick={() => window.alert(t("common.alert_text"))}
+                className="mx-2"
+              />
+            ),
+          }}
+        />
+      </Typography>
     </Layout>
   );
 };
