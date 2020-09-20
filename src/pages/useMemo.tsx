@@ -1,4 +1,11 @@
-import { useState, useMemo, Dispatch, SetStateAction } from "react";
+import {
+  useState,
+  useMemo,
+  useEffect,
+  useCallback,
+  Dispatch,
+  SetStateAction,
+} from "react";
 import Layout from "../components/Layout";
 import { connect } from "react-redux";
 import { Typography, Slider, Button } from "@material-ui/core";
@@ -51,6 +58,34 @@ const MyBetterSlider = ({ setValue }: MySliderProps) => {
   );
 };
 
+interface Foo {
+  bar: () => undefined;
+  baz: number[];
+}
+
+function Foo({ bar, baz }: Foo) {
+  const [text, setText] = useState("");
+
+  useEffect(() => {
+    setText(text + " foobar");
+  }, [bar, baz]);
+  return <div>{text}</div>;
+}
+
+function Blub() {
+  const bar = () => undefined;
+  const baz = [1, 2, 3];
+
+  return <Foo bar={bar} baz={baz} />;
+}
+
+function BetterBlub() {
+  const bar = useCallback(() => undefined, []);
+  const baz = useMemo(() => [1, 2, 3], []);
+
+  return <Foo bar={bar} baz={baz} />;
+}
+
 const IndexPage = () => {
   const [value, setValue] = useState(DEFAULT_VAL);
   const [opt, setOpt] = useState(false);
@@ -70,10 +105,14 @@ const IndexPage = () => {
         ) : (
           <MySlider setValue={setValue} />
         )}
-        <Button variant="outlined" onClick={() => setOpt(!opt)}>
-          {opt ? "not useMemo" : "useMemo"}
-        </Button>
       </section>
+      <Typography variant="h5" className="mt-4 mb-4">
+        2. Referential equality
+      </Typography>
+      {opt ? <BetterBlub /> : <Blub />}
+      <Button variant="outlined" className="mt-4" onClick={() => setOpt(!opt)}>
+        {opt ? "not useMemo" : "useMemo"}
+      </Button>
     </Layout>
   );
 };
