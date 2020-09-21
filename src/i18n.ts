@@ -1,5 +1,4 @@
 import NextI18Next, { TFunction, I18n } from "next-i18next";
-import { applyServerHMR } from "i18next-hmr/server";
 import path from "path";
 
 const nextI18next = new NextI18Next({
@@ -22,6 +21,7 @@ export const i18n = nextI18next.i18n;
 // Doc: Without i18next-hmr, Page won't be updated,
 //  even if you refresh the page manually, after modifying locales.
 if (process.env.NODE_ENV !== "production") {
+  const { applyServerHMR } = require("i18next-hmr/server");
   applyServerHMR(i18n);
 }
 
