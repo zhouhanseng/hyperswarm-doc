@@ -19,43 +19,49 @@ type MySliderProps = {
 const DEFAULT_VAL = 30;
 
 const MySlider = ({ setValue }: MySliderProps) => {
-  let _result = 0;
+  let result = 0;
   for (let i = 0; i < 10000; i++) {
     for (let j = 0; j < 10000; j++) {
-      _result += i + j;
+      result += i + j;
     }
   }
 
   return (
-    <Slider
-      defaultValue={DEFAULT_VAL}
-      onChange={(_e, val) => {
-        let a = val as number;
-        setValue(a + 100);
-      }}
-    />
+    <>
+      <Slider
+        defaultValue={DEFAULT_VAL}
+        onChange={(_e, val) => {
+          let a = val as number;
+          setValue(a + 100);
+        }}
+      />
+      <span>{result}</span>
+    </>
   );
 };
 
 const MyBetterSlider = ({ setValue }: MySliderProps) => {
-  let _result = 0;
+  let result = 0;
   useMemo(() => {
     for (let i = 0; i < 10000; i++) {
       for (let j = 0; j < 10000; j++) {
-        _result += i + j;
+        result += i + j;
       }
     }
   }, []);
 
   return (
-    <Slider
-      className="bg-red-400"
-      defaultValue={DEFAULT_VAL}
-      onChange={(_e, val) => {
-        let a = val as number;
-        setValue(a + 100);
-      }}
-    />
+    <>
+      <Slider
+        className="bg-red-400"
+        defaultValue={DEFAULT_VAL}
+        onChange={(_e, val) => {
+          let a = val as number;
+          setValue(a + 100);
+        }}
+      />
+      <span>{result}</span>
+    </>
   );
 };
 
