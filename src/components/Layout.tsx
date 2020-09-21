@@ -15,11 +15,11 @@ type NavigateProps = {
 
 const Navigate = ({ link, title }: NavigateProps) => (
   <Typography color="textPrimary" variant="body1" className="inline-block">
-    <Button>
-      <Link href={link}>
-        <a className="normal-case">{title}</a>
-      </Link>
-    </Button>
+    <Link href={link}>
+      <a>
+        <Button className="normal-case">{title}</Button>
+      </a>
+    </Link>
   </Typography>
 );
 
@@ -31,7 +31,7 @@ const Layout = ({ children, title = "This is the default title" }: Props) => (
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     </Head>
     <header>
-      <nav className="mb-1">
+      <nav className="mb-2">
         <Navigate link="/useMemo" title="useMemo" />
         <Navigate link="/redux" title="redux" />
         <Navigate link="/cache-image" title="cache-image" />
