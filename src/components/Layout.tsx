@@ -33,10 +33,11 @@ const Layout = ({ children, title = "This is the default title" }: Props) => (
     <header>
       <nav className="mb-2">
         <Navigate link="/useMemo" title="useMemo" />
-        <Navigate link="/redux" title="redux" />
+        <Navigate link="/rechyons" title="rechyons" />
         <Navigate link="/cache-image" title="cache-image" />
         <Navigate link="/i18n" title="i18n" />
         <Navigate link="/useValueRef" title="useValueRef" />
+        <Navigate link="/swr" title="swr" />
       </nav>
     </header>
     {children}

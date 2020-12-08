@@ -17,18 +17,15 @@ const defaultAccountRef = new ValueRef<Account | null>(null, accountComparer);
 export function useDefaultAccountRef() {
   const [defaultAccount, setDefaultAccount] = useState(defaultAccountRef.value);
 
-  defaultAccountRef.addListener((newVal, oldVal) => {
-    console.log(newVal, oldVal);
+  defaultAccountRef.addListener((newVal, _oldVal) => {
     setDefaultAccount(newVal);
   });
 
   return defaultAccount;
 }
 
-setTimeout(() => {
-  defaultAccountRef.value = { account_name: "zhcd" } as Account;
-}, 1000);
-
-setTimeout(() => {
-  defaultAccountRef.value = { account_name: "zhc" } as Account;
+setInterval(() => {
+  defaultAccountRef.value = {
+    account_name: "zhc" + Math.floor(Math.random() * 100),
+  } as Account;
 }, 2000);

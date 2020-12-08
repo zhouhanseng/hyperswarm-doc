@@ -8,7 +8,7 @@ const Page = () => {
   return (
     <Layout title="redux">
       <PageAnimate>
-        <h1>ValueRef is a super global variable</h1>
+        <p>ValueRef is kind of super global variable</p>
         <section className="flex items-center">
           {defaultAccount ? defaultAccount.account_name : null}
         </section>
