@@ -3,5 +3,6 @@
   "switch_language": "切换语言",
   "language": "中文",
   "text_contains_link": "这是带有<again>按钮</again>的一句话",
-  "alert_text": "世界，你好!"
+  "alert_text": "世界，你好!",
+  "alert_text1": "世界，你好a!"
 }
