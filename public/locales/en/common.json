@@ -3,5 +3,6 @@
   "switch_language": "switch language",
   "language": "En",
   "text_contains_link": "This is a text contains a <again>button</again>",
-  "alert_text": "Hello world!"
+  "alert_text": "Hello world!",
+  "test_cherry_remote": "cherry_remote"
 }
